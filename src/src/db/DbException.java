@@ -1,4 +1,4 @@
-package jbdbc1;
+package db;
 
 import java.io.Serial;
 
