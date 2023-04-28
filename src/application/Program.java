@@ -1,7 +1,6 @@
 package application;
 
 import db.DB;
-import db.DbException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,10 +27,15 @@ public class Program {
                 //pegar o inteiro que está no campo "Id", pegar a string que está no campo name
                 System.out.println(rs.getInt("Id") + ", " + rs.getString("Name"));
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             e.printStackTrace();
         }
-
+        finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(st);
+            DB.closeConnection();
+        }
 
     }
 }
