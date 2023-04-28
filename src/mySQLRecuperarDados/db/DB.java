@@ -1,4 +1,4 @@
-package db;
+package mySQLRecuperarDados.db;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -27,8 +27,8 @@ public class DB{
     }
 
     private static Properties loadProperties(){
-        // Abrir o arquivo db.properties quje está na pasta do projeto.
-        try (FileInputStream fs = new FileInputStream("db.properties")){
+        // Abrir o arquivo mySQLRecuperarDados.db.properties quje está na pasta do projeto.
+        try (FileInputStream fs = new FileInputStream("mySQLRecuperarDados.db.properties")){
             // Criar o objeto properties que ficara responsavel por guardar as informações das propriedas do banco.
             Properties ps = new Properties();
             // Carregar as propriedades que estão no nosso arquivo para o objeto Properties
