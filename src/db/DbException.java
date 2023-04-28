@@ -1,4 +1,4 @@
-package mySQLRecuperarDados.db;
+package db;
 
 import java.io.Serial;
 
