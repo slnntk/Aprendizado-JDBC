@@ -1,6 +1,6 @@
-package application;
+package mySQLRecuperarDados.application;
 
-import db.DB;
+import mySQLRecuperarDados.db.DB;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,6 +15,7 @@ public class Program {
         Statement st = null;
         ResultSet rs = null;
         try {
+
             conn = DB.getConnection();
             st = conn.createStatement();
             // Executa a busca procurando todos os elementos de department e guarda em st
@@ -27,8 +28,7 @@ public class Program {
                 //pegar o inteiro que está no campo "Id", pegar a string que está no campo name
                 System.out.println(rs.getInt("Id") + ", " + rs.getString("Name"));
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         finally {
@@ -36,6 +36,5 @@ public class Program {
             DB.closeStatement(st);
             DB.closeConnection();
         }
-
     }
 }
