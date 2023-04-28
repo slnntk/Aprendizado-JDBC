@@ -11,7 +11,7 @@ public class DB{
 
     private static Connection conn = null;
 
-    private static Connection getConnection(){
+    public static Connection getConnection(){
         //Testar se o objeto Connection (conn) continua nulo, se continuar a connection ainda não foi feita.
         if (conn == null){
             try {
