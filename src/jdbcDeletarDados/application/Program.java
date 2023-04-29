@@ -1,6 +1,7 @@
 package jdbcDeletarDados.application;
 
 import jdbcDeletarDados.db.DB;
+import jdbcDeletarDados.db.DbIntegrityException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,13 +20,13 @@ public class Program {
                     + "WHERE "
                     + "Id = ?");
 
-            st.setInt(1, 5);
+            st.setInt(1, 2);
 
             int rowsAffected = st.executeUpdate();
             System.out.println("Done! Rows affected: " + rowsAffected);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DbIntegrityException(e.getMessage());
         }
         finally {
             DB.closeStatement(st);
