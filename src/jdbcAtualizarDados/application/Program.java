@@ -1,8 +1,8 @@
-package jdbcInserirDados.application;
+package jdbcAtualizarDados.application;
 
 
-import jdbcInserirDados.db.DbException;
-import jdbcInserirDados.db.DB;
+import jdbcAtualizarDados.db.DbException;
+import jdbcAtualizarDados.db.DB;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
