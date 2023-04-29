@@ -1,53 +1,41 @@
 package jdbcAtualizarDados.application;
 
 
-import jdbcAtualizarDados.db.DbException;
-import jdbcAtualizarDados.db.DB;
+import jdbcInserirDados.db.DB;
+import jdbcInserirDados.db.DbException;
 
-import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Program {
     public static void main(String[] args) {
-        // Conectar com BD
-        Connection conn = null;
-        PreparedStatement st = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        try {
+        Connection conn = null;
+        PreparedStatement stUpSalary = null;
+        PreparedStatement stDownSalary = null;
+
+        try{
             conn = DB.getConnection();
 
-           /*
-            st = conn.prepareStatement(
-                    "INSERT INTO seller "
-                   +"(Name, Email, BirthDate, BaseSalary, DepartmentId) "
-                   +"VALUES "
-                   +"(?, ?, ?, ?, ?)",
-            Statement.RETURN_GENERATED_KEYS);
-            st.setString(1, "Carl Purple");
-            st.setString(2, "carl@gmail.com");
-            st.setDate(3, new java.sql.Date(sdf.parse("16/08/2002").getTime()));
-            st.setDouble(4, 3000.0);
-            st.setInt(5, 4);*/
+            stUpSalary = conn.prepareStatement(
+                    "UPDATE seller "
+                    + "SET BaseSalary = BaseSalary + ? "
+                    + "WHERE "
+                    + "(DepartmentId = ?)");
 
-            st = conn.prepareStatement("insert into department (Name) values ('D1'), ('D2')",
-                    Statement.RETURN_GENERATED_KEYS);
-            int rowsAffected = st.executeUpdate();
+            stUpSalary.setDouble(1, 200.0);
+            stUpSalary.setInt(2, 2);
 
-            if (rowsAffected > 0) {
-                ResultSet rs = st.getGeneratedKeys();
-                while (rs.next()) {
-                    int id = rs.getInt(1);
-                    System.out.println("Done| Id = " + id);
-                }
-            } else {
-                System.out.println("No rows affected! ");
-            }
+            int rowsAffected = stUpSalary.executeUpdate();
+            System.out.println("Done! Rows affected: " + rowsAffected);
 
-        } catch (SQLException e) {
-            throw new DbException(e.getMessage());
-        } finally {
-            DB.closeStatement(st);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            DB.closeStatement(stUpSalary);
+            DB.closeStatement(stDownSalary);
             DB.closeConnection();
         }
     }
