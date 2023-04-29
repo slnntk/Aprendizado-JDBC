@@ -1,4 +1,4 @@
-package mySQLInserirDados.db;
+package jdbcInserirDados.db;
 
 import java.io.FileInputStream;
 import java.io.IOException;

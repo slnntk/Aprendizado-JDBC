@@ -1,11 +1,10 @@
-package mySQLInserirDados.application;
+package jdbcInserirDados.application;
 
 
-import mySQLInserirDados.db.DbException;
-import mySQLRecuperarDados.db.DB;
+import jdbcInserirDados.db.DbException;
+import jdbcRecuperarDados.db.DB;
 
 import java.sql.*;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class Program {

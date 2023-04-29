@@ -1,6 +1,7 @@
-package mySQLRecuperarDados.application;
+package jdbcRecuperarDados.application;
 
-import mySQLRecuperarDados.db.DB;
+
+import jdbcRecuperarDados.db.DB;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

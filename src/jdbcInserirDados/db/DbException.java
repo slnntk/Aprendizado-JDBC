@@ -1,4 +1,4 @@
-package mySQLInserirDados.db;
+package jdbcInserirDados.db;
 
 import java.io.Serial;
 

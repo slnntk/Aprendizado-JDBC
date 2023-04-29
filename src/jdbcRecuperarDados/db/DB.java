@@ -1,4 +1,4 @@
-package mySQLRecuperarDados.db;
+package jdbcRecuperarDados.db;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class DB{
     }
 
     private static Properties loadProperties(){
-        // Abrir o arquivo mySQLRecuperarDados.mySQLRecuperarDados.db.properties quje está na pasta do projeto.
+        // Abrir o arquivo db.properties quje está na pasta do projeto.
         try (FileInputStream fs = new FileInputStream("db.properties")){
             // Criar o objeto properties que ficara responsavel por guardar as informações das propriedas do banco.
             Properties ps = new Properties();
@@ -39,22 +39,12 @@ public class DB{
         }
     }
 
-    public static void closeConnection(){
-        if (conn != null){
-            try {
-                conn.close();
-            } catch (SQLException e){
-                throw new DbException("Error in close the Connection" + e.getMessage());
-            }
-        }
-    }
-
     public static void closeStatement(Statement st){
         if (st != null){
             try {
                 st.close();
             } catch (SQLException e) {
-                throw new DbException("Error in close the Statement" + e.getMessage());
+                throw new DbException("Error in close the Statement st " + e.getMessage());
             }
         }
     }
@@ -64,10 +54,23 @@ public class DB{
             try {
                 rs.close();
             } catch (SQLException e) {
-                throw new DbException("Error in close the ResultSet" + e.getMessage());
+                throw new DbException("Error in close the ResultSet " + e.getMessage());
             }
         }
     }
+
+    public static void closeConnection(){
+        if (conn != null){
+            try {
+                conn.close();
+            } catch (SQLException e){
+                throw new DbException("Error in close the connection " + e.getMessage());
+
+            }
+        }
+    }
+
+
 
 
 
