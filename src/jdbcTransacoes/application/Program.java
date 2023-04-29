@@ -20,10 +20,9 @@ public class Program {
             st = conn.createStatement();
             int rows1 = st.executeUpdate("UPDATE seller SET BaseSalary = 2090 WHERE DepartmentId = 1");
 
-       }
-*/
             int rows2 = st.executeUpdate("UPDATE seller SET BaseSalary = 3090 WHERE DepartmentId = 2");
             conn.commit();
+
             System.out.println(rows1);
             System.out.println(rows2);
         } catch (SQLException e){
