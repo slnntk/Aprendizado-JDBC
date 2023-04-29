@@ -20,7 +20,7 @@ public class Program {
 
             stUpSalary = conn.prepareStatement(
                     "UPDATE seller "
-                    + "SET BaseSalary = BaseSalary + ? "
+                    + "SET BaseSalary = BaseSalary - ? "
                     + "WHERE "
                     + "(DepartmentId = ?)");
 
@@ -29,7 +29,7 @@ public class Program {
 
             int rowsAffected = stUpSalary.executeUpdate();
             System.out.println("Done! Rows affected: " + rowsAffected);
-
+            
         } catch (SQLException e){
             e.printStackTrace();
         }
