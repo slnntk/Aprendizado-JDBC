@@ -12,11 +12,5 @@ public class Program {
         Connection conn = null;
         PreparedStatement st = null;
         conn = DB.getConnection();
-
-        st = conn.prepareStatement(
-                "INSERT INTO seller "
-                + "(Name, Email, Birthday, BaseSalary, DepartmentId)"
-                + "VALUES "
-                + "(?, ?, ?, ?, ?)");
     }
 }
